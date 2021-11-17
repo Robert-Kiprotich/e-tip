@@ -1,0 +1,211 @@
+html,
+body{
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    overflow:visible;
+  margin: 0;
+   height: 100%;
+   position: relative;
+}
+
+/*form */
+    form {
+      margin-top: 30px;
+    border: 5px solid #f1f1f1;
+    
+    width: 100%;
+    
+    }
+    input[type=text], input[type=password] {
+    width:100%;
+    padding: 16px 8px;
+    
+    margin: 8px 0;
+    display: flex;
+    
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    }
+    .icon {
+    font-size: 110px;
+    display: flex;
+    justify-content: center;
+    color: #4286f4;
+    }
+    button {
+      background-color: #07b34f;
+      color: white;
+      padding: 14px 0;
+      margin: 10px 0;
+      border: none;
+      cursor: grab;
+      width:20%;
+      border-radius: 20%;
+    }
+    h1 {
+    text-align:center;
+    font-size:18;
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    .formcontainer {
+    text-align: center;
+    margin: 24px 50px 24px;
+    }
+    .container {
+    padding: 16px 0;
+    padding-left: 100px;
+    text-align:left;
+    }
+    span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+    }
+    /* Change styles for span on extra small screens */
+    @media screen and (max-width: 300px) {
+    span.psw {
+    display: block;
+    float: none;
+    }
+}
+
+/*homepage*/
+
+
+
+    /*wanted suspect card */
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    /* Float four columns side by side */
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 10px;
+    
+    }
+
+    .column-center {
+      float: left;
+      width: 50%;
+      padding: 10px 10px;
+     
+    }
+    .column-center-wanted {
+      position: absolute;
+      width: 50%;
+      left: 20%;
+     
+    }
+
+    
+    /* Remove extra left and right margins, due to padding */
+    .row {margin: 0 -5px;}
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+    
+    /* Style the counter cards */
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+      border: solid black;
+     
+    }
+    .card h2{
+      background-color: #ccc;
+      border-top: solid;
+      border-radius: 5px;
+    }
+   .emergency{
+     background-color:#141f27 ;
+     font-size: 27px;
+     border-radius: 2px;
+     border-top: solid;
+     
+    font-weight: 600;
+    border-left: 20px;
+    border-radius: 5px;
+   }
+   .emergency h3{
+    font-weight: 600;
+    border-left: 50px;
+    font-size: 27px;
+   }
+   .contacts{
+     border-top: solid;
+     border-bottom: solid;
+     border-radius: 5px;
+   }
+   .contacts h3{
+     color: whitesmoke;
+     background:#141f27;
+     border-radius: 5px;
+   }
+   .contacts p{
+     font-size: 20px;
+   
+  }
+   .emergency-type{
+     background-color: wheat;
+     border-radius: 30px;
+     border-top: solid;
+   }
+   .emergency-select{
+     border-style: 20px  solid;
+   }
+   .contacts{
+     
+     border-top:solid;
+
+   }
+   .contacts h1{
+    font-size: 25px;
+    font-weight: 600;
+   }
+    .card-center {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+      
+    }
+    .column-inside{
+      float: left;
+      width: 50%;
+      padding: 10px 10px;
+      
+    }
+    .wanted-form{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      text-align: center;
+     width: auto;
+     margin-left: 100px;
+    }
+
+    
+    

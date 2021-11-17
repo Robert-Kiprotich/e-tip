@@ -1,0 +1,25 @@
+.list
+{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+ 
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+    .list__item
+    {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .list
+{
+    overflow: hidden; /* just clearing floats */
+}
+    .list__item
+    {
+        width: 25%; /* 4 items per row */
+        float: left;
+    }
