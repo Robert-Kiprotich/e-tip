@@ -3,4 +3,5 @@ $('.nav-link').on('click', function(e) {
     $(this).prop('disabled',true);
   });
 
+
   

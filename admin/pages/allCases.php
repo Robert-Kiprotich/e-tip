@@ -1,5 +1,5 @@
 
-<?php  session_start();?>
+
 
 
 
@@ -62,7 +62,7 @@ if (isset($_GET['del'])) {
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
 
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas bg-dark"  id="sidebar">
         <ul class="nav">
         <li class="nav-item active">
             <a class="nav-link"   href="../index.php" >

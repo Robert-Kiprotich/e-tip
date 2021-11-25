@@ -1,12 +1,11 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas text-white bg-dark"  id="sidebar">
         <ul class="nav">
-          <li class="nav-item  <?php if($page=='allCases'){echo 'active';}?>">
-            <a class="nav-link"  data-toggle="collapse" href="pages/AllCases.php" aria-expanded="false" aria-controls="ui-basic">
-            <i class="bi bi-stack"></i><br>
+        <li class="nav-item">
+            <a class="nav-link"  href="pages/allCases.php#" data-toggle="collapse" aria-expanded="false" aria-controls="charts">
+              <i class="icon-columns menu-icon"></i>
               <span class="menu-title">All Cases</span>
+              <i class="menu-arrow"></i>
             </a>
-           
-          </li>
           <li class="nav-item">
             <a class="nav-link"  href="pages/whistleblows.php#" data-toggle="collapse" aria-expanded="false" aria-controls="charts">
               <i class="icon-columns menu-icon"></i>

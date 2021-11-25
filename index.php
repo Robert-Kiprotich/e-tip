@@ -28,25 +28,24 @@ if(isset($_SESSION['status'])){
 ?>
 
 <div class="card-center">
-<form  action="functions.php" method="POST" enctype="multipart/form-data">
+<form  action="functions.php" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
 <div class="formcontainer">
       <div class="container">
       <h1> CASE REPORT</h1>
   <div class="row">
    <!--col start-->
    <div class="col-md-6">
-    <div class="form-group">
+     <div class="form-group">
        
         <div class="col-sm-10">
-        <input type="date" class="form-control"  name="date" placeholder="date"required>
-            
+         <input type="text" class="form-control" id="currentDate"  name="date" placeholder="" value="" readonly > 
         </div>
-    </div>
+    </div> 
     <div class="form-group">
         
         <div class="col-sm-10">
-        <input type="text" class="form-control"  name="fname" placeholder="First Name" required>
-            
+        <input type="text" class="form-control"  name="fname" id="fname" placeholder="First Name" autocomplete="off"> 
+        <p  class="text-danger" id="error_fname" ></p>
         </div>
     </div>
 </div>
@@ -54,41 +53,30 @@ if(isset($_SESSION['status'])){
     <div class="form-group">
         
         <div class="col-sm-10">
-        <input type="text" class="form-control"  name="mname" placeholder="Middle Name" required>
+        <input type="text" class="form-control"  name="mname" id="mname" placeholder="Middle Name"  autocomplete="off">
+        <p  class="text-danger" id="error_mname" ></p>
         </div>
     </div>
     <div class="form-group">
        
         <div class="col-sm-10">
-        <input type="text" class="form-control"  name="lname" placeholder="Last Name"  required>
+        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" autocomplete="off" >
+        <p  class="text-danger" id="error_lname" ></p>
         </div>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="Name" placeholder="Phone Number" name="phone" required>
+            <input type="text" class="form-control" id="phone" placeholder="Phone Number" onkeypress="javascript:return isNumber(event)" name="phone" autocomplete="off" >
+            <p  class="text-danger" id="error_para" ></p>
         </div>
     </div>
     <div class="form-group">
         
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="Address" name="idno" required  placeholder="ID number">
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6">
-    <div class="form-group">
-       
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="Name" name="crime" required placeholder="Case">
-        </div>
-    </div>
-    <div class="form-group">
-        
-        <div class="col-sm-10">
-            <input type="text" class="form-control"  name="residence" required  required placeholder="Residence">
+            <input type="text" class="form-control" id="idno" name="idno" onkeypress="javascript:return isNumber(event)"  placeholder="ID number" autocomplete="off">
+            <p  class="text-danger" id="error_phone" ></p>
         </div>
     </div>
 </div>
@@ -97,13 +85,31 @@ if(isset($_SESSION['status'])){
     <div class="form-group">
        
         <div class="col-sm-10">
-        <textarea id="mytextarea" class="form-control" placeholder="Statement"  name="statement"></textarea>
+            <input type="text" class="form-control" id="crime" name="crime"  placeholder="Case" autocomplete="off">
+            <p  class="text-danger" id="error_crime" ></p>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label"></label>
+        
         <div class="col-sm-10">
-            <input type="file" name="file" class="form-control" >
+            <input type="text" class="form-control"  name="residence" id="residence" placeholder="Residence" autocomplete="off">
+            <p  class="text-danger" id="error_residence" ></p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+       
+        <div class="col-sm-10">
+        <textarea id="mytextarea" class="form-control" placeholder="Statement" id="statement" name="statement"></textarea>
+        <p  class="text-danger" id="error_statement" ></p>
+    </div>
+    </div>
+    <div class="form-group">
+       
+        <div class="col-sm-10">
+            <input type="file" name="file" class="form-control">
         </div>
     </div>
 </div>
@@ -113,52 +119,14 @@ if(isset($_SESSION['status'])){
     
   </div>
  </div>
- <button type="submit" name="submit_case" value="Upload" ><strong>SEND/TUMA</strong></button>
+ <button onclick="confirmData()" type="submit" name="submit_case" value="Submit" ><strong>SEND/TUMA</strong></button>
  </div>
 </form>
 </div>
 </div>
 
-<!--
- <form >
-      
-      <div class="formcontainer">
-      <div class="container">
-      <div class="col">
-      <label for="date"><strong>Date/Tarehe</strong></label><br> 
-        <input type="date"  name="date" required>
-        <br> <br> 
-        </div>
-        <div class="col">
-        <label for="fname"><strong>First name/jina la kwanza</strong></label>
-        
-        </div>
-        <label for="mname"><strong>Middle name/jina la kati</strong></label>
-        <input type="text"  name="mname" >
-        </div>
-        <div class="col">
-        <label for="lname"><strong>Last  name/jina la mwisho</strong></label>
-        <input type="text"  name="lname" required>
-        <label for="id"><strong>ID number/ Kitambuilsho</strong></label>
-        <input type="text"  name="idno" required>
-        <label for="case"><strong>Case/kesi</strong></label>
-        <input type="text"  name="crime" required>
-        <label for="rseidence"><strong>Residence/mahali unaoishi</strong></label>
-        <input type="text" placeholder="" name="residence" required>
-        <label for="evidence"><strong>Upload Evidence (photo or video)/weka ushahidi (picha au video)</strong></label>
-        <input type="file"  name="file" required ><br>
-        <label for="stmnt"><strong>Statement/maelezo</strong></label>
-        <textarea id="mytextarea"  name="statement"></textarea>
-        <label for="phone" ><strong>Phone number/ nambari ya simu</strong></label>
-        <input type="text"  name="phone" required>
-      </div>
-      <button type="submit" name="submit_case" value="Upload" ><strong>SEND/TUMA</strong></button>
-      </div>
-    </form>
-    </div>
-  </div>
-  </div>
--->
+
+
   <!---emergency contacts begin---->
   <?php include('includes/emergency.php') ?>
    <!---emergency contacts end---->
@@ -168,5 +136,94 @@ if(isset($_SESSION['status'])){
 
  <!-- FOOTER -->
   </body>
+
+<script type="text/javascript">
+
+  function validate()
+{
+ var error="";
+ var name = document.getElementById( "fname" );
+ if( name.value == "" )
+ {
+  error = " cannot be empty. ";
+  
+  document.getElementById( "error_fname" ).innerHTML = error;
+  return false;
+ }
+
+ var name = document.getElementById( "mname" );
+ if( name.value == "" )
+ {
+  error = "  cannot be empty.";
+  document.getElementById( "error_mname" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "lname" );
+ if( name.value == "" )
+ 
+ {
+  error = "  cannot be empty. ";
+  document.getElementById( "error_lname" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "idno" );
+ if( name.value == "" )
+ {
+  error = " cannot be empty.";
+  document.getElementById( "error_idno" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "crime" );
+ if( name.value == "" )
+ {
+  error = "  cannot be empty.";
+  document.getElementById( "error_crime" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "residence" );
+ if( name.value == "" )
+ {
+  error = "  cannot be empty. ";
+  document.getElementById( "error_residence" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "statement" );
+ if( name.value == "" )
+ {
+  error = "  cannot be empty. ";
+  document.getElementById( "error_statement" ).innerHTML = error;
+  return false;
+ }
+ var name = document.getElementById( "phone" );
+ if( name.value == "" )
+ {
+  error = "  cannot be empty. ";
+  document.getElementById( "error_phone" ).innerHTML = error;
+  return false;
+ }
+ else
+ {
+
+  return true;
+ }
+ 
+}
+function isNumber(evt) {
+var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+}
+
+
+var today = new Date();
+  var date =today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+  document.getElementById("currentDate").value = date;
+
+
+
+  function confirmData() {
+  confirm("Are you sure?");
+}
+</script>
   
 </html>

@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php  session_start();?>
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -41,7 +40,7 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
      <?php //include('../includes/sidebar.php') ?>
-     <nav class="sidebar sidebar-offcanvas" id="sidebar">
+     <nav class="sidebar sidebar-offcanvas bg-dark" id="sidebar">
         <ul class="nav">
         <li class="nav-item active">
             <a class="nav-link"  data-toggle="collapse" href="../index.php" aria-expanded="false" aria-controls="ui-basic">

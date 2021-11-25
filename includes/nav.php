@@ -9,6 +9,7 @@
     <a class="nav-item nav-link " href="index.php">Home</a>
       <a class="nav-item nav-link " href="whistle.php">Tip police</a>
       <a class="nav-item nav-link " href="wanted.php">Wanted suspects</a>
+      <a class="nav-item nav-link " href="caseTracker.php">Case Progress</a>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Stolen Items
@@ -26,6 +27,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="missingPersnReport.php">Report Missing person</a>
           <a class="dropdown-item" href="missing.php">View Missing person</a>
+
           
         </div>
     </div>

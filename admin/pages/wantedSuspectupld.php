@@ -24,7 +24,7 @@
   
 </head>
 <body>
-<?php  session_start();?>
+
  <?php include('../../functions.php') ?>
   <body>
 
@@ -37,7 +37,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas bg-dark" id="sidebar">
         <ul class="nav">
         <li class="nav-item active">
             <a class="nav-link"  data-toggle="collapse" href="../index.php" aria-expanded="false" aria-controls="ui-basic">

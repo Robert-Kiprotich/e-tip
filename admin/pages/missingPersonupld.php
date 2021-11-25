@@ -24,7 +24,7 @@
   
 </head>
 <body>
-<?php  session_start();?>
+
  <?php include('../../functions.php') ?>
   <body>
     <div class="container-scroller">
@@ -33,7 +33,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas bg-dark" id="sidebar">
         <ul class="nav">
         <li class="nav-item active">
             <a class="nav-link"  data-toggle="collapse" href="../index.php" aria-expanded="false" aria-controls="ui-basic">
@@ -109,14 +109,10 @@
 
 
   <div class="wanted-form">
+
+ 
 <div class="card-center">
-<?php  if (count($notify) > 0) : ?>
-  <div class="error">
-  	<?php foreach ($notify as $notif) : ?>
-  	  <p><?php echo $notify ?></p>
-  	<?php endforeach ?>
-  </div>
-  <?php  endif ?>
+
 <form action="functions.php" method="POST" enctype="multipart/form-data">
       <h1>MISSING PERSON REPORT</h1>
       <div class="formcontainer">

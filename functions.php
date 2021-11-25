@@ -2,10 +2,15 @@
 include('db.php');
 
 
-session_start();
+
+
+$nameErr =   $idnErr ="";
+
 //cases submission
 if(isset($_POST['submit_case'])){
-    $date = $conn->real_escape_string($_POST['date']);
+  
+  $date= date("Y-m-d");
+    //$date = $conn->real_escape_string($_POST['date']);
     $fname = $conn->real_escape_string($_POST['fname']);
     $mname = $conn->real_escape_string($_POST['mname']);
     $lname = $conn->real_escape_string($_POST['lname']);
@@ -18,8 +23,11 @@ if(isset($_POST['submit_case'])){
     $targetDir = "admin/images/cases/";
 
     if(!empty($_FILES["file"]["name"])){
+    //   $image= $_FILES["file"]["name"];
+    // }
+    //  else {
 
-      $image = basename($_FILES["file"]["name"]);
+      $image = basename($_FILES["file"]["name"] || NULL);
   $targetFilePath = $targetDir . $image;
   $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
       // Allow certain file formats
@@ -28,21 +36,22 @@ if(isset($_POST['submit_case'])){
          // Upload file to server
          if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
 
-$sql = "INSERT INTO cases(date,fname,mname,lname,idno,crime,residence,statement,phone,image) VALUES('$date','$fname','$mname','$lname','$idno','$crime','$residence','$statement','$phone','$image')";
+$sql = "INSERT INTO cases(date,fname,mname,lname,idno,crime,residence,statement,phone,image) VALUES('$date','$fname','$mname','$lname','$idno','$crime','$residence','$statement','$phone',NULL)";
 
          }}}
 
-if($conn->query($sql)==true){
+if($conn->query($sql)==0){
   $_SESSION['status']="data inserted succesfully";
   header('location: index.php');
   
 
 }
 else{
-  array_push($notify," Could not able to execute $sql. " . $conn->error);
+  $_SESSION['status']=" No data inserted ";
 }
 $conn->close();
 }
+
 
 //theft submission
 include('db.php');
