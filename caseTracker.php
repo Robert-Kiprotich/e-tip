@@ -10,10 +10,10 @@
     <br>
 <main>
  
-<div class="row">
-<?php include('includes/twitter.php') ?>
 
-  <div class="column-center">
+<?php// include('includes/twitter.php') ?>
+
+  
   
 <?php
 if(isset($_SESSION['status'])){
@@ -27,20 +27,98 @@ if(isset($_SESSION['status'])){
 }
 ?>
 
-<div class="card-center">
 
-     
+<div class="container container-fluid">
+        
+                  <h4 class="text-center">Case Progress</h4>
+                  
+
+                  <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+              
+                <th>
+                 Date
+                </th>
+                <th>
+                  First name
+                </th>
+               
+                <th>
+                Last name
+                </th>
+                
+                <th>
+                 crime
+                </th>
+                <th>
+                 residence
+                </th>
+                <th>
+                 statement
+                </th>
+                <th>
+                 phone
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+         
+<?php
+         $data = "SELECT date,fname,mname,lname,id,crime,residence,statement,phone,image,status FROM cases";
+         $que = mysqli_query($conn,$data);
+         $cnt = 1;
+         while ($result = mysqli_fetch_assoc($que)) {
+
+
+?>
+<tr>
+
+<td><?php echo $result['date']; ?></td>
+<td><?php echo $result['fname']; ?></td>
+
+<td><?php echo$result['lname']; ?></td>
+
+<td><?php echo$result['crime']; ?></td>
+<td><?php echo$result['residence']; ?></td>
+<td><?php echo$result['statement']; ?></td>
+<td><?php echo $result['phone']; ?></td>
+
+
+
+
+              <td>
+              <?php 
+            if ($result['status'] == 0) {
+              echo "<h1  class='btn btn-sm btn-danger'> In-progress </h1>";
+              ?>
+          </td>
+            <td>
+              <?php
+            }
+            else{
+              echo " <h1  class='btn btn-sm btn-success'> Completed </h1>";
+            }
+        
+      
+           ?>
+            </td>
+        </tr>
+        <?php
+     $cnt++;
+    }
+      ?>
+ </tbody>
+</table>
 </div>
-</div>
 
-
-
-  <!---emergency contacts begin---->
-  <?php include('includes/emergency.php') ?>
-   <!---emergency contacts end---->
+  
 
 
 </main>
+
+
 
  <!-- FOOTER -->
   </body>

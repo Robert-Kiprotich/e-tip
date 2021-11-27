@@ -15,6 +15,9 @@ if (isset($_GET['del'])) {
 }
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -185,51 +188,71 @@ if (isset($_GET['del'])) {
             <tbody>
          
 <?php
-            global $conn;
-    $data = "SELECT date,fname,mname,lname,id,crime,residence,statement,phone,image FROM cases";
-    $result=$conn->query($data);
 
-    if($result->num_rows>0){
-        
-      while($row = $result->fetch_assoc()) {
+
+$data = "SELECT date,fname,mname,lname,id,crime,residence,statement,phone,image,status FROM cases";
+									$que = mysqli_query($conn,$data);
+									$cnt = 1;
+									while ($result = mysqli_fetch_assoc($que)) {
+    //         global $conn;
+    // $data = "SELECT date,fname,mname,lname,id,crime,residence,statement,phone,image,status FROM cases";
+    // $result=$conn->query($data);
+    // $cnt = 1;
+
+    // if($result->num_rows>0){
+      
+      
+    //   while($row = $result->fetch_assoc()) {
    
         
         ?>
         <tr>
-        <td><?php echo $row['image']; ?></td>
-        <td><?php echo $row['date']; ?></td>
-        <td><?php echo $row['fname']; ?></td>
-        <td><?php echo $row['mname']; ?></td>
-        <td><?php echo $row['lname']; ?></td>
-        <td><?php echo $row['id']; ?></td>
-        <td><?php echo $row['crime']; ?></td>
-        <td><?php echo $row['residence']; ?></td>
-        <td><?php echo $row['statement']; ?></td>
-        <td><?php echo $row['phone']; ?></td>
+        <td><?php echo $result['image']; ?></td>
+        <td><?php echo $result['date']; ?></td>
+        <td><?php echo $result['fname']; ?></td>
+        <td><?php echo $result['mname']; ?></td>
+        <td><?php echo$result['lname']; ?></td>
+        <td><?php echo $result['id']; ?></td>
+        <td><?php echo$result['crime']; ?></td>
+        <td><?php echo$result['residence']; ?></td>
+        <td><?php echo$result['statement']; ?></td>
+        <td><?php echo $result['phone']; ?></td>
+      
 
-        <td>
+       
+        <?php 
+							 			if ($result['status'] == 0) {
+							 				echo "";
+							 				?>
+							 				</td>
+							 		<td>
+							 			<form action="update.php?id=<?php echo $result['id']; ?>" method="POST">
+							 				<input type="hidden" name="appid" value="<?php echo $result['id']; ?>">
+							 				<input type="submit" class="btn btn-sm btn-success" name="approve" value="Approve">
+							 			</form>
+							 		</td>
+							 				<?php
+							 			}
+							 			else{
+							 				echo "";
+							 			}
+                  
+							 
+							 		 ?>
+
+
+
+
+
+        
         <!-- Button trigger modal -->
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+<td>
+<button type="button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#staticBackdrop">
   Edit
 </button>
-<?php
-// global $conn;
+</td>
 
-// if (isset($_POST['update'])) {
-//   //$id = $_POST['id'];
-// 	$date = $_POST['date'];
-// 	$fname = $_POST['fname'];
-//   $mname = $_POST['mname'];
-//   $lname = $_POST['lname'];
-// 	$residence = $_POST['residence'];
-//   $phone = $_POST['phone'];
-  
-// 	mysqli_query($conn, "UPDATE cases SET date='$date', fname='$fname', mname='$mname', lname='$lname',residence='$residence', phone='$phone' WHERE id=$id");
-// 	$_SESSION['message'] = "Address updated!"; 
-// 	//header('location: index.php');
-//}
-?>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -269,7 +292,7 @@ if (isset($_GET['del'])) {
   </div>
   <div class="modal-footer">
   
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
         <?php if ($update == true): ?>
         <button type="submit" name="update" class="btn btn-primary">save</button>
         <?php endif ?>
@@ -284,13 +307,15 @@ if (isset($_GET['del'])) {
 </div>
         </td>
         <td>
-				<a href="allCases.php?del=<?php echo $row['id']; ?>" class="btn btn-danger" >Delete</a>
+				<a href="allCases.php?del=<?php echo $row['id']; ?>"   class="btn btn-sm btn-danger" >Delete</a>
 			</td>
      
         </tr>
         <?php
+        
+        $cnt++;	
       }
-    }
+  
       ?>
  </tbody>
                     </table>
@@ -299,6 +324,8 @@ if (isset($_GET['del'])) {
                   </div>
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>

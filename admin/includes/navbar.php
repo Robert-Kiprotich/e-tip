@@ -17,7 +17,7 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
       
-            <a class="nav-link count-indicator dropdown-toggle"   id="notificationDropdown" href="../index.php?logout='1'" name="logout" data-toggle="dropdown">
+            <a class="nav-link count-indicator dropdown-toggle"   id="notificationDropdown" href="../home.php?logout='1'" name="logout" data-toggle="dropdown">
               Logout
             </a>
             <?php endif ?>

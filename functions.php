@@ -2,15 +2,14 @@
 include('db.php');
 
 
-
+session_start();
 
 $nameErr =   $idnErr ="";
-
+ $fname="" || $mname="" || $lname= "" || $idno=0 || $crime="" || $residence="" || $statement="" || $phone=0 || $image=NULL;
 //cases submission
-if(isset($_POST['submit_case'])){
+if(isset($_POST['submit_case']  )){
   
   $date= date("Y-m-d");
-    //$date = $conn->real_escape_string($_POST['date']);
     $fname = $conn->real_escape_string($_POST['fname']);
     $mname = $conn->real_escape_string($_POST['mname']);
     $lname = $conn->real_escape_string($_POST['lname']);
@@ -22,25 +21,25 @@ if(isset($_POST['submit_case'])){
 
     $targetDir = "admin/images/cases/";
 
-    if(!empty($_FILES["file"]["name"])){
+  
     //   $image= $_FILES["file"]["name"];
     // }
     //  else {
 
-      $image = basename($_FILES["file"]["name"] || NULL);
+      $image = basename($_FILES["file"]["name"]);
   $targetFilePath = $targetDir . $image;
   $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
       // Allow certain file formats
       $allowTypes = array('jpg','png','jpeg','gif','pdf');
-      if(in_array($fileType, $allowTypes)){
+      in_array($fileType, $allowTypes);
          // Upload file to server
-         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+         move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
 
-$sql = "INSERT INTO cases(date,fname,mname,lname,idno,crime,residence,statement,phone,image) VALUES('$date','$fname','$mname','$lname','$idno','$crime','$residence','$statement','$phone',NULL)";
+$sql = "INSERT INTO cases(date,fname,mname,lname,idno,crime,residence,statement,phone,image) VALUES('$date','$fname','$mname','$lname','$idno','$crime','$residence','$statement','$phone','$image')";
 
-         }}}
+         
 
-if($conn->query($sql)==0){
+if($conn->query($sql)==true){
   $_SESSION['status']="data inserted succesfully";
   header('location: index.php');
   
@@ -51,8 +50,6 @@ else{
 }
 $conn->close();
 }
-
-
 //theft submission
 include('db.php');
 if(isset($_POST['submit_theft'])){
@@ -70,18 +67,20 @@ if(isset($_POST['submit_theft'])){
 
   $targetDir = "admin/images/theft/";
 
-  if(!empty($_FILES["file"]["name"])){
+  $image ="";
+if (empty($_FILES) && empty($_POST) && isset($_SERVER) ||  !empty($_FILES["file"]["name"])) {
+ 
 
     $image = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $image;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
     // Allow certain file formats
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
+    $allowTypes = array('jpg','png','jpeg','gif','pdf','');
     if(in_array($fileType, $allowTypes)){
        // Upload file to server
        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
 
-$sql = "INSERT INTO theft(date,datestln,fname,mname,lname,id,stlnitem,residence,statement,phone,image) VALUES('$date','$datestln','$fname','$mname','$lname','$id','$stlnitem','$residence','$statement','$phone','$image')";
+$sql = "INSERT INTO theft(date,datestln,fname,mname,lname,id,stlnitem,residence,statement,phone,image) VALUES('$date','$datestln','$fname','$mname','$lname','$id','$stlnitem','$residence','$statement','$phone','$image' OR null)";
 
        }}}
 

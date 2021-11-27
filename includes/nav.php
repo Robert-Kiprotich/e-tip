@@ -6,7 +6,7 @@
   </button>
   <div class="collapse navbar-collapse"  id="navbarNavDropdown">
     <div class="navbar-nav" >
-    <a class="nav-item nav-link " href="index.php">Home</a>
+    <a class="nav-item nav-link " href="home.php">Home</a>
       <a class="nav-item nav-link " href="whistle.php">Tip police</a>
       <a class="nav-item nav-link " href="wanted.php">Wanted suspects</a>
       <a class="nav-item nav-link " href="caseTracker.php">Case Progress</a>
